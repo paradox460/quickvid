@@ -1,0 +1,30 @@
+#!/usr/bin/env fish
+# mise description="Bumps the program's version"
+set deno_json $MISE_PROJECT_ROOT/deno.json
+
+set old_version (jq -r .version $deno_json)
+
+if set -q argv[1]
+  set new_version $argv[1]
+else
+  string match -rq "(?<date>(?<year>\d{4})\.(?<month>\d{2})\.(?<day>\d{2}))(?:\.(?<increment>\d+))?" $old_version
+  set new_date (gdate +%Y.%m.%d)
+
+  if test $new_date = $date
+    set increment (math $increment + 1)
+    set increment ".$increment"
+  else
+    set date $new_date
+    set increment ""
+  end
+
+  set new_version "$date$increment"
+end
+
+jq ".version=\"$new_version\"" $deno_json | sponge $deno_json
+
+git add $deno_json
+
+git commit --allow-empty -m "quickvid v$new_version"
+
+echo "$old_version -> $new_version"

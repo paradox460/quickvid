@@ -1,0 +1,10 @@
+#!/usr/bin/env fish
+# mise description="Installs the tool and generates completions"
+# mise depends=["build"]
+set program $MISE_PROJECT_ROOT/build/quickvid
+
+echo (set_color green) "Installing binary"(set_color normal)
+ln -sfn $program ~/.bin/quickvid
+echo (set_color green) "Installing completions"(set_color normal)
+mkdir -p ~/.local/share/fish/vendor_completions.d/
+$program completions fish > ~/.local/share/fish/vendor_completions.d/quickvid.fish
