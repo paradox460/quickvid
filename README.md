@@ -14,7 +14,9 @@ Quickvid is a command-line tool for quick video and image editing, watermarking,
 
 ## Installation
 
-Binaries are provided for various platforms, check the [latest release](https://github.com/paradox460/quickvid/releases/latest) to see if yours is supported
+Binaries are provided for various platforms, check the [latest release](https://github.com/paradox460/quickvid/releases/latest) to see if yours is supported.
+
+Note that a large amount of the internal functionality is based around MacOS utilities. I haven't tested nor used this on other operating systems, so YMMV. PRs always welcome.
 
 
 ### Build it yourself
