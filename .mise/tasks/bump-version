@@ -1,5 +1,6 @@
 #!/usr/bin/env fish
 # mise description="Bumps the program's version"
+# mise depends=["build"]
 set deno_json $MISE_PROJECT_ROOT/deno.json
 
 set old_version (jq -r .version $deno_json)
@@ -27,6 +28,11 @@ git add $deno_json
 
 git commit --allow-empty -m "quickvid v$new_version"
 
-git tag -as "v$new_version" -m ""
+if command -q gh
+  gh release create "v$new_version" --generate-notes --title "v$new_version" $MISE_PROJECT_ROOT/build/*
+else
+  echo "GitHub CLI not found, creating tag manually"
+  git tag -a "v$new_version" -m ""
+end
 
 echo "$old_version -> $new_version"
