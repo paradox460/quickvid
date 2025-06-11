@@ -31,7 +31,7 @@ const args = await new Command()
   .name("quickvid")
   .version(packageInfo.version)
   .description(
-"Tool for working with video and images, for quick edits, watermarking, and conversion."
+    "Tool for working with video and images, for quick edits, watermarking, and conversion."
   )
   .arguments("<input:file> [output:file]")
   .option("-e, --edit", "Opens the command in an editor before dispatching")
@@ -98,8 +98,7 @@ const args = await new Command()
   .type("timezone", new TimeZoneType())
   .option(
     "-d.z, --date.zone, --tz <timezone:timezone>",
-    "The timezone to use, otherwise uses current timezone",
-    { default: "America/Los_Angeles" },
+    "The timezone to use, otherwise uses current timezone"
   )
   .group("Output Options")
   .option(
@@ -213,16 +212,18 @@ const filterGraph = joinFilterChains(filterList);
 if (!outputFile) {
   const extension = video.isStill ? "jpg" : "mp4";
   const filename = generateFilenameDate(
-    options.date.zone,
-    options.date?.date,
+    {
+      zone: options.date?.zone,
+      input: options.date?.date
+    },
   ) + "." + extension;
   outputFile = absolutePath(Path.join(options.output.directory, filename));
 }
 
 const videoOutput = [
+  ...(video.isStill ? [] : ["-c:v", "libx264", "-pix_fmt", "yuv420p"]),
   "-map",
-  `[${finalOutput.video}]`,
-  ...(video.isStill ? [] : ["-c:v", "libx264"]),
+  `[${finalOutput.video}]`
 ];
 
 const duration = !video.isStill || video.duration > 0
@@ -238,10 +239,10 @@ let ffmpegCommand = [
   ...audio.audioInput,
   "-filter_complex",
   filterGraph,
-  ...(finalOutput.audio
-    ? ["-map", `[${finalOutput.audio}]`, "-c:a", "aac"]
-    : ["-an"]),
   ...videoOutput,
+  ...(finalOutput.audio
+    ? ["-c:a", "aac", "-map", `[${finalOutput.audio}]`]
+    : ["-an"]),
   "-map_metadata",
   "-1",
   ...duration,

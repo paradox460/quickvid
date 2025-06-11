@@ -77,7 +77,7 @@ function parse(str: string) {
   return dayjs(str.toUpperCase(), FORMATS);
 }
 
-export function generateFilenameDate(zone: string, input?: string): string {
+export function generateFilenameDate({zone, input}: {zone?: string, input?: string}): string {
   let date;
   if (input) {
     date = parse(input);
