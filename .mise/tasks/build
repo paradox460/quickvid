@@ -4,4 +4,4 @@
 # mise outputs=["build/quickvid"]
 # mise tools=["deno"]
 
-deno compile --allow-sys=homedir --allow-run=ffprobe,ffmpeg,mpv,open,osascript,nvim,yt-dlp --allow-read --allow-write -o build/quickvid main.ts
+deno compile --allow-sys=homedir --allow-run --allow-read --allow-write -o build/quickvid main.ts

@@ -18,7 +18,7 @@ jobs:
       - name: Build releases
         run: |
           for arch in aarch64-apple-darwin x86_64-apple-darwin x86_64-pc-windows-msvc x86_64-unknown-linux-gnu aarch64-unknown-linux-gnu; do
-            deno compile --allow-sys=homedir --allow-run=ffprobe,ffmpeg,mpv,open,osascript,nvim,yt-dlp --allow-read --allow-write --target $arch -o build/quickvid-$arch main.ts
+            deno compile --allow-sys=homedir --allow-run --allow-read --allow-write --target $arch -o build/quickvid-$arch main.ts
           done
       - name: Upload release assets
         uses: softprops/action-gh-release@v2
