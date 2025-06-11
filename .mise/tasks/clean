@@ -1,0 +1,6 @@
+#!/usr/bin/env fish
+# mise description="Compiles everything, with the proper env flags set"
+# mise sources=["**/*.ts", "deno.json", "deno.lock"]
+# mise tools=["deno"]
+
+rm build/*

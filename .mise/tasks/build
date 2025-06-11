@@ -4,4 +4,6 @@
 # mise outputs=["build/quickvid"]
 # mise tools=["deno"]
 
-deno compile --allow-sys=homedir --allow-run=ffprobe,ffmpeg,mpv,open,osascript,nvim,yt-dlp --allow-read --allow-write -o build/quickvid main.ts
+for arch in aarch64-apple-darwin x86_64-apple-darwin x86_64-pc-windows-msvc x86_64-unknown-linux-gnu aarch64-unknown-linux-gnu
+  deno compile --allow-sys=homedir --allow-run=ffprobe,ffmpeg,mpv,open,osascript,nvim,yt-dlp --allow-read --allow-write --target $arch -o build/quickvid-$arch main.ts
+end
