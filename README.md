@@ -12,12 +12,20 @@ Quickvid is a command-line tool for quick video and image editing, watermarking,
 - Edit ffmpeg commands before execution
 - Integration with MPV for preview and editfile generation
 
+Note that a large amount of the internal functionality is based around MacOS utilities. I haven't tested nor used this on other operating systems, so YMMV. PRs always welcome.
+
 ## Installation
 
 Binaries are provided for various platforms, check the [latest release](https://github.com/paradox460/quickvid/releases/latest) to see if yours is supported.
 
-Note that a large amount of the internal functionality is based around MacOS utilities. I haven't tested nor used this on other operating systems, so YMMV. PRs always welcome.
+### Install with mise
+If you use [mise](https://mise.jdx.dev), you can install quickvid with the following command::
 
+```sh
+mise install ubi:paradox460/quickvid
+```
+
+Note that this is using [ubi](https://github.com/houseabsolute/ubi), and quickvid can obviously be installed using it.
 
 ### Build it yourself
 
