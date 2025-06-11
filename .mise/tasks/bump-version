@@ -27,4 +27,6 @@ git add $deno_json
 
 git commit --allow-empty -m "quickvid v$new_version"
 
+git tag -as "v$new_version" -m ""
+
 echo "$old_version -> $new_version"
