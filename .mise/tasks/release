@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 # mise description="Bumps the program's version"
-# mise depends=["build"]
+# mise depends=["clean", "build"]
 set deno_json $MISE_PROJECT_ROOT/deno.json
 
 set old_version (jq -r .version $deno_json)
