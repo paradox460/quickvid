@@ -14,6 +14,11 @@ Quickvid is a command-line tool for quick video and image editing, watermarking,
 
 ## Installation
 
+Binaries are provided for various platforms, check the [latest release](https://github.com/paradox460/quickvid/releases/latest) to see if yours is supported
+
+
+### Build it yourself
+
 Quickvid is written in Deno. Make sure you have [Deno](https://deno.com/) installed.
 
 We use Mise for our version and tool chain management. You'll need to have [mise](https://mise.jdx.dev) installed.
