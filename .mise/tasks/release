@@ -27,6 +27,7 @@ jq ".version=\"$new_version\"" $deno_json | sponge $deno_json
 git add $deno_json
 
 git commit --allow-empty -m "quickvid v$new_version"
+git push
 
 if command -q gh
   gh release create "v$new_version" --generate-notes --title "v$new_version" $MISE_PROJECT_ROOT/build/*
