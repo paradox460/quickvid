@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 # mise description="Installs the tool and generates completions"
 # mise depends=["build"]
-set program $MISE_PROJECT_ROOT/build/quickvid-aarch64-apple-darwin
+set program $MISE_PROJECT_ROOT/build/quickvid
 
 echo (set_color green) "Installing binary"(set_color normal)
 cp $program ~/.bin/quickvid
