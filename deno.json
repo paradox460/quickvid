@@ -1,5 +1,5 @@
 {
-  "version": "2025.06.10",
+  "version": "2025.06.26",
   "tasks": {
     "dev": "deno run --watch main.ts"
   },
