@@ -19,11 +19,10 @@ const FORMATS = [
   "YYYYMMDD_HHmmss", // IMG timestamp
   "hh:mm:ss A", // 12 hours
   "HH:mm:ss", // 24 Hours
-
 ];
 
 export function help(): string {
-  const redBullet = colors.red("-")
+  const redBullet = colors.red("-");
   const table: Table = new Table()
     .header(["Token", "Lower Bound (inclusive)", "Upper Bound (inclusive)"])
     .body([
@@ -35,35 +34,41 @@ export function help(): string {
     ])
     .padding(1)
     .indent(2)
-    .border()
-
+    .border();
 
   return [
-  colors.bold("Date Formatting and Generation\n"),
-  colors.bold("Formats:\n"),
-  `  ${redBullet} ${colors.blue("YYYY-MM-DD HH:mm:ss Z")} Human readable ISO 8601 format`,
-  `  ${redBullet} ${colors.blue("YYYY-MM-DDTHH:mm:ssZ")} Real ISO 8601 format`,
-  `  ${redBullet} ${colors.blue("YYYY-MM-DD HH:mm:ssZZ")} Compact ISO 8601 format`,
-  `  ${redBullet} ${colors.blue("YYYYMMDD_HHmmss")} IMG timestamp`,
-  `  ${redBullet} ${colors.blue("hh:mm:ss A")} 12 hours`,
-  `  ${redBullet} ${colors.blue("HH:mm:ss")} 24 Hours`,
+    colors.bold("Date Formatting and Generation\n"),
+    colors.bold("Formats:\n"),
+    `  ${redBullet} ${
+      colors.blue("YYYY-MM-DD HH:mm:ss Z")
+    } Human readable ISO 8601 format`,
+    `  ${redBullet} ${
+      colors.blue("YYYY-MM-DDTHH:mm:ssZ")
+    } Real ISO 8601 format`,
+    `  ${redBullet} ${
+      colors.blue("YYYY-MM-DD HH:mm:ssZZ")
+    } Compact ISO 8601 format`,
+    `  ${redBullet} ${colors.blue("YYYYMMDD_HHmmss")} IMG timestamp`,
+    `  ${redBullet} ${colors.blue("hh:mm:ss A")} 12 hours`,
+    `  ${redBullet} ${colors.blue("HH:mm:ss")} 24 Hours`,
 
-  "",
-  colors.dim("  All timestamps may be prefixed with `IMG_`."),
-  colors.dim("  In the case of time-only timestamps, the date will be set to today.\n"),
+    "",
+    colors.dim("  All timestamps may be prefixed with `IMG_`."),
+    colors.dim(
+      "  In the case of time-only timestamps, the date will be set to today.\n",
+    ),
 
-  colors.bold("Random Tokens:\n"),
-  "  The following tokens can be used to generate random values:",
-  table.toString(),
-  "",
+    colors.bold("Random Tokens:\n"),
+    "  The following tokens can be used to generate random values:",
+    table.toString(),
+    "",
 
-  colors.bold("Ranges"),
+    colors.bold("Ranges"),
 
-  `  ${redBullet} ${colors.blue("()")} exclusive`,
-  `  ${redBullet} ${colors.blue("[]")} inclusive`,
-  ""
+    `  ${redBullet} ${colors.blue("()")} exclusive`,
+    `  ${redBullet} ${colors.blue("[]")} inclusive`,
+    "",
   ].join("\n");
-
 }
 
 function generateRandomValues(str: string): string {
@@ -115,7 +120,7 @@ function generateRandomValues(str: string): string {
 
 function parse(str: string) {
   if (/^IMG_/.test(str)) {
-    str =str.replace(/^IMG_/, "");
+    str = str.replace(/^IMG_/, "");
   }
   // Check to see if we have any randomizer tokens present
   if ((/[ymdhs\[\]\(\)]/gi).test(str)) {
@@ -125,7 +130,9 @@ function parse(str: string) {
   return dayjs(str.toUpperCase(), FORMATS);
 }
 
-export function generateFilenameDate({zone, input}: {zone?: string, input?: string}): string {
+export function generateFilenameDate(
+  { zone, input }: { zone?: string; input?: string },
+): string {
   let date;
   if (input) {
     date = parse(input);

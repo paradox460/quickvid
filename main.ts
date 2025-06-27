@@ -31,7 +31,7 @@ const args = await new Command()
   .name("quickvid")
   .version(packageInfo.version)
   .description(
-    "Tool for working with video and images, for quick edits, watermarking, and conversion."
+    "Tool for working with video and images, for quick edits, watermarking, and conversion.",
   )
   .arguments("<input:file> [output:file]")
   .option("-e, --edit", "Opens the command in an editor before dispatching")
@@ -98,7 +98,7 @@ const args = await new Command()
   .type("timezone", new TimeZoneType())
   .option(
     "-d.z, --date.zone, --tz <timezone:timezone>",
-    "The timezone to use, otherwise uses current timezone"
+    "The timezone to use, otherwise uses current timezone",
   )
   .group("Output Options")
   .option(
@@ -174,7 +174,7 @@ const logo = new Logo({
   width: options.logo?.width,
   wiggle: options.logo?.wiggle,
   filters: options.logo?.filters ? [...options.logo.filters] : undefined,
-  filename: options.logo?.filename
+  filename: options.logo?.filename,
 });
 
 const audio = await (new Audio({
@@ -220,7 +220,7 @@ if (!outputFile) {
   const filename = generateFilenameDate(
     {
       zone: options.date?.zone,
-      input: options.date?.date
+      input: options.date?.date,
     },
   ) + "." + extension;
   outputFile = absolutePath(Path.join(options.output.directory, filename));
@@ -229,7 +229,7 @@ if (!outputFile) {
 const videoOutput = [
   ...(video.isStill ? [] : ["-c:v", "libx264", "-pix_fmt", "yuv420p"]),
   "-map",
-  `[${finalOutput.video}]`
+  `[${finalOutput.video}]`,
 ];
 
 const duration = !video.isStill || video.duration > 0
