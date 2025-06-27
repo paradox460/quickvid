@@ -5,6 +5,9 @@ import customParseFormat from "dayjs/plugin/customParseFormat.js";
 import { randomInt } from "@es-toolkit/es-toolkit";
 import { sprintf } from "@std/fmt/printf";
 
+import { Table } from "@cliffy/table";
+import { colors } from "@cliffy/ansi/colors";
+
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.extend(customParseFormat);
@@ -18,6 +21,50 @@ const FORMATS = [
   "HH:mm:ss", // 24 Hours
 
 ];
+
+export function help(): string {
+  const redBullet = colors.red("-")
+  const table: Table = new Table()
+    .header(["Token", "Lower Bound (inclusive)", "Upper Bound (inclusive)"])
+    .body([
+      [colors.blue("m, s"), 0, 59],
+      [colors.blue("h, M"), 1, 12],
+      [colors.blue("H"), 0, 23],
+      [colors.blue("d, D"), 1, 31],
+      [colors.blue("y, Y"), 0, new Date().getFullYear()],
+    ])
+    .padding(1)
+    .indent(2)
+    .border()
+
+
+  return [
+  colors.bold("Date Formatting and Generation\n"),
+  colors.bold("Formats:\n"),
+  `  ${redBullet} ${colors.blue("YYYY-MM-DD HH:mm:ss Z")} Human readable ISO 8601 format`,
+  `  ${redBullet} ${colors.blue("YYYY-MM-DDTHH:mm:ssZ")} Real ISO 8601 format`,
+  `  ${redBullet} ${colors.blue("YYYY-MM-DD HH:mm:ssZZ")} Compact ISO 8601 format`,
+  `  ${redBullet} ${colors.blue("YYYYMMDD_HHmmss")} IMG timestamp`,
+  `  ${redBullet} ${colors.blue("hh:mm:ss A")} 12 hours`,
+  `  ${redBullet} ${colors.blue("HH:mm:ss")} 24 Hours`,
+
+  "",
+  colors.dim("  All timestamps may be prefixed with `IMG_`."),
+  colors.dim("  In the case of time-only timestamps, the date will be set to today.\n"),
+
+  colors.bold("Random Tokens:\n"),
+  "  The following tokens can be used to generate random values:",
+  table.toString(),
+  "",
+
+  colors.bold("Ranges"),
+
+  `  ${redBullet} ${colors.blue("()")} exclusive`,
+  `  ${redBullet} ${colors.blue("[]")} inclusive`,
+  ""
+  ].join("\n");
+
+}
 
 function generateRandomValues(str: string): string {
   return str.replaceAll(/[ydhs]|(?<![AP])m|[\[\(]\d+-\d+[\]\)]/ig, (match) => {
@@ -37,6 +84,7 @@ function generateRandomValues(str: string): string {
         break;
       case "D":
       case "d":
+        lower = 1;
         upper = 31;
         break;
       case "Y":

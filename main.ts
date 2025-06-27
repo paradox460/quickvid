@@ -3,7 +3,7 @@ import { isNull } from "@es-toolkit/es-toolkit";
 import * as Path from "@std/path";
 import packageInfo from "./deno.json" with { type: "json" };
 import Audio from "./src/audio.ts";
-import { generateFilenameDate } from "./src/dates.ts";
+import { generateFilenameDate, help as dateHelp } from "./src/dates.ts";
 import { EditFile } from "./src/editfile.ts";
 import { ffprobe } from "./src/ffprobe.ts";
 import Logo from "./src/logo.ts";
@@ -120,6 +120,12 @@ const args = await new Command()
   )
   .option("-o.command, --output.command", "Prints the (unescaped) command ")
   .command("completions", new CompletionsCommand())
+  .reset()
+  .command("dates")
+  .action(() => {
+    console.log(dateHelp());
+    Deno.exit(0);
+  })
   .reset()
   .parse(Deno.args);
 
