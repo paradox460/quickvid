@@ -62,8 +62,9 @@ export function help(): string {
 }
 
 function generateRandomValues(str: string): string {
-  return str.replaceAll(/[ydhs]|(?<![AP])m|[\[\(]\d+-\d+[\]\)]/ig, (match) => {
+  return str.replaceAll(/%[ymdhs]|[\[\(]\d+-\d+[\]\)]/ig, (match) => {
     let lower = 0, upper: number, fmtString = "%02d";
+    match = match.replace(/%/g, "");
     switch (match) {
       case "m":
       case "s":
@@ -113,7 +114,7 @@ function parse(str: string) {
     str = str.replace(/^IMG_/, "");
   }
   // Check to see if we have any randomizer tokens present
-  if ((/[ymdhs\[\]\(\)]/gi).test(str)) {
+  if ((/%[ymdhs]|[\[\]\(\)]/gi).test(str)) {
     str = generateRandomValues(str);
   }
   return dayjs(str);
