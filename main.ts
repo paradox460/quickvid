@@ -121,10 +121,12 @@ const args = await new Command()
   .option("-o.command, --output.command", "Prints the (unescaped) command ")
   .command("completions", new CompletionsCommand())
   .reset()
-  .command("dates")
-  .action(() => {
-    console.log(dateHelp());
-    Deno.exit(0);
+  .command("date [...input]", "Utility for generating date strings")
+  .description(dateHelp())
+  .action((_args, ...inputArgs) => {
+    const input = inputArgs.join(" ");
+    console.log(generateFilenameDate({ input }));
+    Deno.exit(0)
   })
   .reset()
   .parse(Deno.args);
