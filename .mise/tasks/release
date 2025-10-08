@@ -23,11 +23,12 @@ end
 
 jq ".version=\"$new_version\"" $deno_json | sponge $deno_json
 
-git add $deno_json
-
-git commit --allow-empty -m "quickvid v$new_version"
+jj new -m "quickvid v$new_version"
+jj bookmark set "master"
 git tag -a "v$new_version" -m ""
-git push --follow-tags
+jj log
+read -P "Press enter to continue..."; or exit 1
+jj git push
 
 
 echo "$old_version -> $new_version"
