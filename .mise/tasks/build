@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
-# mise description="Compiles everything, with the proper env flags set"
-# mise sources=["**/*.ts", "deno.json", "deno.lock"]
-# mise outputs=["build/quickvid"]
-# mise tools=["deno"]
+#MISE description="Compiles everything, with the proper env flags set"
+#MISE sources=["**/*.ts", "deno.json", "deno.lock"]
+#MISE outputs=["build/quickvid"]
+#MISE tools=["deno"]
 
 deno compile --allow-sys=homedir --allow-run --allow-read --allow-write -o build/quickvid main.ts

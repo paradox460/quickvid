@@ -1,5 +1,5 @@
 #!/usr/bin/env fish
-# mise description="Bumps the program's version"
+#MISE description="Bumps the program's version"
 set deno_json $MISE_PROJECT_ROOT/deno.json
 
 set old_version (jq -r .version $deno_json)
