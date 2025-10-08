@@ -20,7 +20,8 @@
     "jsr:@std/path@^1.1.2": "1.1.2",
     "jsr:@std/path@~1.0.6": "1.0.9",
     "jsr:@std/text@~1.0.7": "1.0.16",
-    "npm:@types/node@*": "22.5.4",
+    "npm:@types/node@*": "24.2.0",
+    "npm:dayjs-parser@1.0.6": "1.0.6_dayjs@1.11.18",
     "npm:dayjs@^1.11.18": "1.11.18"
   },
   "jsr": {
@@ -109,22 +110,28 @@
     }
   },
   "npm": {
-    "@types/node@22.5.4": {
-      "integrity": "sha512-FDuKUJQm/ju9fT/SeX/6+gBzoPzlVCzfzmGkwKvRHQVxi4BntVbyIwf6a4Xn62mrvndLiml6z/UBXIdEVjQLXg==",
+    "@types/node@24.2.0": {
+      "integrity": "sha512-3xyG3pMCq3oYCNg7/ZP+E1ooTaGB4cG8JWRsqqOYQdbWNY4zbaV0Ennrd7stjiJEFZCaybcIgpTjJWHRfBSIDw==",
       "dependencies": [
         "undici-types"
+      ]
+    },
+    "any-date-parser@2.2.2": {
+      "integrity": "sha512-ZgitJ8kchTF57Hm1PrcX/WCD5ZliRdk+KmL1YKxfHq8a8Em5GpjYtkaw/ctt0kgBYG1q9hsncQIQNUwGDuhPzw=="
+    },
+    "dayjs-parser@1.0.6_dayjs@1.11.18": {
+      "integrity": "sha512-jfYCqcbkjXmlVS2koo3YUjJTdXPJg4cjPMwB42CA2ikBZTyboTdD2/ZBex7MhtQ6tyuFK6sjtNOaSdqjDF7x/A==",
+      "dependencies": [
+        "any-date-parser",
+        "dayjs"
       ]
     },
     "dayjs@1.11.18": {
       "integrity": "sha512-zFBQ7WFRvVRhKcWoUh+ZA1g2HVgUbsZm9sbddh8EC5iv93sui8DVVz1Npvz+r6meo9VKfa8NyLWBsQK1VvIKPA=="
     },
-    "undici-types@6.19.8": {
-      "integrity": "sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw=="
+    "undici-types@7.10.0": {
+      "integrity": "sha512-t5Fy/nfn+14LuOc2KNYg75vZqClpAiqscVvMygNnlsHBFpSXdJaYtXMcdNLpl/Qvc3P2cB3s6lOV51nqsFq4ag=="
     }
-  },
-  "redirects": {
-    "https://deno.land/x/shell_escape/mod.ts": "https://deno.land/x/shell_escape@1.0.0/mod.ts",
-    "https://deno.land/x/shell_escape/multiple-arguments.ts": "https://deno.land/x/shell_escape@1.0.0/multiple-arguments.ts"
   },
   "remote": {
     "https://deno.land/x/shell_escape@1.0.0/multiple-arguments.ts": "202d6e7edd76e88bc0bade07348e29a527e39f37dfceda887d8064a90b4213d8",
@@ -141,6 +148,7 @@
       "jsr:@std/assert@^1.0.15",
       "jsr:@std/fmt@^1.0.8",
       "jsr:@std/path@^1.1.2",
+      "npm:dayjs-parser@1.0.6",
       "npm:dayjs@^1.11.18"
     ]
   }

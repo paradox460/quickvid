@@ -1,25 +1,15 @@
 import dayjs from "dayjs";
 import timezone from "dayjs/plugin/timezone.js";
 import utc from "dayjs/plugin/utc.js";
-import customParseFormat from "dayjs/plugin/customParseFormat.js";
+import dayjsParser from "dayjs-parser";
 import { randomInt } from "@es-toolkit/es-toolkit";
 import { sprintf } from "@std/fmt/printf";
-
 import { Table } from "@cliffy/table";
 import { colors } from "@cliffy/ansi/colors";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
-dayjs.extend(customParseFormat);
-
-const FORMATS = [
-  "YYYY-MM-DD HH:mm:ss Z", // Human readable ISO 8601 format
-  "YYYY-MM-DDTHH:mm:ssZ", // Real ISO 8601 format
-  "YYYY-MM-DD HH:mm:ssZZ", // Compact ISO 8601 format
-  "YYYYMMDD_HHmmss", // IMG timestamp
-  "hh:mm:ss A", // 12 hours
-  "HH:mm:ss", // 24 Hours
-];
+dayjs.extend(dayjsParser);
 
 export function help(): string {
   const redBullet = colors.red("-");
@@ -126,8 +116,7 @@ function parse(str: string) {
   if ((/[ymdhs\[\]\(\)]/gi).test(str)) {
     str = generateRandomValues(str);
   }
-  // Attempt parsing all the formats we know of
-  return dayjs(str.toUpperCase(), FORMATS);
+  return dayjs(str);
 }
 
 export function generateFilenameDate(
