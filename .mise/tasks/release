@@ -21,10 +21,10 @@ else
   set new_version "$date$increment"
 end
 
-jq ".version=\"$new_version\"" $deno_json | sponge $deno_json
-
 jj new -m "quickvid v$new_version"
+jq ".version=\"$new_version\"" $deno_json | sponge $deno_json
 jj bookmark set "master"
+jj new
 git tag -a "v$new_version" -m ""
 jj log
 read -P "Press enter to continue..."; or exit 1
