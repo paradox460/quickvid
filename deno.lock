@@ -21,7 +21,7 @@
     "jsr:@std/path@~1.0.6": "1.0.9",
     "jsr:@std/text@~1.0.7": "1.0.16",
     "npm:@types/node@*": "24.2.0",
-    "npm:dayjs-parser@1.0.6": "1.0.6_dayjs@1.11.18",
+    "npm:chrono-node@^2.9.0": "2.9.0",
     "npm:dayjs@^1.11.18": "1.11.18"
   },
   "jsr": {
@@ -116,15 +116,8 @@
         "undici-types"
       ]
     },
-    "any-date-parser@2.2.2": {
-      "integrity": "sha512-ZgitJ8kchTF57Hm1PrcX/WCD5ZliRdk+KmL1YKxfHq8a8Em5GpjYtkaw/ctt0kgBYG1q9hsncQIQNUwGDuhPzw=="
-    },
-    "dayjs-parser@1.0.6_dayjs@1.11.18": {
-      "integrity": "sha512-jfYCqcbkjXmlVS2koo3YUjJTdXPJg4cjPMwB42CA2ikBZTyboTdD2/ZBex7MhtQ6tyuFK6sjtNOaSdqjDF7x/A==",
-      "dependencies": [
-        "any-date-parser",
-        "dayjs"
-      ]
+    "chrono-node@2.9.0": {
+      "integrity": "sha512-glI4YY2Jy6JII5l3d5FN6rcrIbKSQqKPhWsIRYPK2IK8Mm4Q1ZZFdYIaDqglUNf7gNwG+kWIzTn0omzzE0VkvQ=="
     },
     "dayjs@1.11.18": {
       "integrity": "sha512-zFBQ7WFRvVRhKcWoUh+ZA1g2HVgUbsZm9sbddh8EC5iv93sui8DVVz1Npvz+r6meo9VKfa8NyLWBsQK1VvIKPA=="
@@ -148,7 +141,7 @@
       "jsr:@std/assert@^1.0.15",
       "jsr:@std/fmt@^1.0.8",
       "jsr:@std/path@^1.1.2",
-      "npm:dayjs-parser@1.0.6",
+      "npm:chrono-node@^2.9.0",
       "npm:dayjs@^1.11.18"
     ]
   }

@@ -12,8 +12,8 @@
     "@std/assert": "jsr:@std/assert@^1.0.15",
     "@std/fmt": "jsr:@std/fmt@^1.0.8",
     "@std/path": "jsr:@std/path@^1.1.2",
+    "chrono-node": "npm:chrono-node@^2.9.0",
     "dayjs": "npm:dayjs@^1.11.18",
-    "dayjs-parser": "npm:dayjs-parser@1.0.6",
     "x/shell_escape": "https://deno.land/x/shell_escape@1.0.0/multiple-arguments.ts"
   }
 }

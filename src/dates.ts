@@ -1,15 +1,14 @@
 import dayjs from "dayjs";
 import timezone from "dayjs/plugin/timezone.js";
 import utc from "dayjs/plugin/utc.js";
-import dayjsParser from "dayjs-parser";
 import { randomInt } from "@es-toolkit/es-toolkit";
 import { sprintf } from "@std/fmt/printf";
 import { Table } from "@cliffy/table";
 import { colors } from "@cliffy/ansi/colors";
+import * as chrono from 'chrono-node'
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
-dayjs.extend(dayjsParser);
 
 export function help(): string {
   const redBullet = colors.red("-");
@@ -146,10 +145,6 @@ export function help(): string {
       `  ${redBullet} ２０１７年０８月３１日`,
       "",
 
-      colors.bold("fuzzy"),
-      `  ${redBullet} On Wed 8 March in the year 2020`,
-      `  ${redBullet} In 1929, the stock market crashed on October 29`,
-      "\n",
       colors.dim("  All timestamps may be prefixed with `IMG_`."),
       colors.dim(
         "  In the case of time-only timestamps, the date will be set to today.\n",
@@ -232,7 +227,8 @@ function parse(str: string) {
   if ((/%[tymdhs]|[\[\]\(\)]/gi).test(str)) {
     str = generateRandomValues(str);
   }
-  return dayjs(str);
+  const chronoDate = chrono.parseDate(str);
+  return dayjs(chronoDate);
 }
 
 export function generateFilenameDate(
